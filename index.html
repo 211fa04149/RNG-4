@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Number Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="generator">
+    <h1>Random Number Generator</h1>
+    <input type="number" id="min-value" placeholder="Enter minimum value" />
+    <input type="number" id="max-value" placeholder="Enter maximum value" />
+    <button id="generate-btn">Generate</button>
+    <p class="result">Generated Number: <span id="random-number"></span></p>
+</div>
+
+<script>
+    document.getElementById('generate-btn').addEventListener('click', function() {
+    const minValue = parseInt(document.getElementById('min-value').value);
+    const maxValue = parseInt(document.getElementById('max-value').value);
+
+    if (isNaN(minValue) || isNaN(maxValue)) {
+        alert('Please enter valid numbers.');
+        return;
+    }
+
+    if (minValue > maxValue) {
+        alert('Minimum value cannot be greater than maximum value.');
+        return;
+    }
+
+    const randomNumber = Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue;
+    document.getElementById('random-number').textContent = randomNumber;
+});
+
+</script>
+</body>
+</html>
